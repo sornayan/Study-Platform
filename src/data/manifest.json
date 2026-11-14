@@ -1,0 +1,253 @@
+{
+  "nlp": {
+    "name": "Natural Language Processing",
+    "code": "CS622",
+    "file": "Answers/NATURAL_LANGUAGE_PROCESSING_PYQ_ANSWERS_AUDITED.md",
+    "file_size": 95531,
+    "years": {
+      "2025": {
+        "total_entries": 14,
+        "main_questions": 7,
+        "subquestions": 13,
+        "or_options": 0,
+        "short_notes": 1
+      }
+    },
+    "totals": {
+      "total_entries": 14,
+      "main_questions": 7,
+      "subquestions": 13,
+      "or_options": 0,
+      "short_notes": 1
+    }
+  },
+  "system-software": {
+    "name": "System Software",
+    "code": "IT611",
+    "file": "Answers/SYSTEM_SOFTWARE_PYQ_ANSWERS.md",
+    "file_size": 65152,
+    "years": {
+      "2025": {
+        "total_entries": 14,
+        "main_questions": 7,
+        "subquestions": 13,
+        "or_options": 0,
+        "short_notes": 1
+      },
+      "2024": {
+        "total_entries": 16,
+        "main_questions": 8,
+        "subquestions": 16,
+        "or_options": 0,
+        "short_notes": 0
+      }
+    },
+    "totals": {
+      "total_entries": 30,
+      "main_questions": 15,
+      "subquestions": 29,
+      "or_options": 0,
+      "short_notes": 1
+    }
+  },
+  "image-processing": {
+    "name": "Digital Image Processing",
+    "code": "CS633",
+    "file": "Answers/IMAGE_PROCESSING_PYQ_ANSWERS.md",
+    "file_size": 112754,
+    "years": {
+      "2025": {
+        "total_entries": 15,
+        "main_questions": 8,
+        "subquestions": 14,
+        "or_options": 0,
+        "short_notes": 1
+      },
+      "2024": {
+        "total_entries": 18,
+        "main_questions": 8,
+        "subquestions": 18,
+        "or_options": 0,
+        "short_notes": 0
+      },
+      "2023": {
+        "total_entries": 16,
+        "main_questions": 8,
+        "subquestions": 15,
+        "or_options": 0,
+        "short_notes": 1
+      },
+      "2022": {
+        "total_entries": 12,
+        "main_questions": 8,
+        "subquestions": 11,
+        "or_options": 0,
+        "short_notes": 1
+      },
+      "2021": {
+        "total_entries": 14,
+        "main_questions": 8,
+        "subquestions": 13,
+        "or_options": 0,
+        "short_notes": 1
+      }
+    },
+    "totals": {
+      "total_entries": 75,
+      "main_questions": 40,
+      "subquestions": 71,
+      "or_options": 0,
+      "short_notes": 4
+    }
+  },
+  "entrepreneurship": {
+    "name": "Entrepreneurship",
+    "code": "IC601",
+    "file": "Answers/ENTREPRENEURSHIP_PYQ_ANSWERS.md",
+    "file_size": 124157,
+    "years": {
+      "2025": {
+        "total_entries": 15,
+        "main_questions": 8,
+        "subquestions": 13,
+        "or_options": 1,
+        "short_notes": 1
+      },
+      "2024": {
+        "total_entries": 15,
+        "main_questions": 8,
+        "subquestions": 14,
+        "or_options": 0,
+        "short_notes": 1
+      },
+      "2023": {
+        "total_entries": 15,
+        "main_questions": 8,
+        "subquestions": 14,
+        "or_options": 0,
+        "short_notes": 1
+      },
+      "2022": {
+        "total_entries": 15,
+        "main_questions": 8,
+        "subquestions": 14,
+        "or_options": 0,
+        "short_notes": 1
+      },
+      "2021": {
+        "total_entries": 15,
+        "main_questions": 8,
+        "subquestions": 14,
+        "or_options": 0,
+        "short_notes": 1
+      }
+    },
+    "totals": {
+      "total_entries": 75,
+      "main_questions": 40,
+      "subquestions": 69,
+      "or_options": 1,
+      "short_notes": 5
+    }
+  },
+  "computer-networks": {
+    "name": "Computer Networks",
+    "code": "CS601",
+    "file": "Answers/COMPUTER_NETWORKS_PYQ_ANSWERS.md",
+    "file_size": 90104,
+    "years": {
+      "2025": {
+        "total_entries": 16,
+        "main_questions": 7,
+        "subquestions": 13,
+        "or_options": 0,
+        "short_notes": 3
+      },
+      "2024": {
+        "total_entries": 15,
+        "main_questions": 8,
+        "subquestions": 14,
+        "or_options": 1,
+        "short_notes": 0
+      },
+      "2023": {
+        "total_entries": 16,
+        "main_questions": 8,
+        "subquestions": 15,
+        "or_options": 0,
+        "short_notes": 1
+      },
+      "2022": {
+        "total_entries": 18,
+        "main_questions": 8,
+        "subquestions": 14,
+        "or_options": 0,
+        "short_notes": 4
+      },
+      "2021": {
+        "total_entries": 19,
+        "main_questions": 8,
+        "subquestions": 14,
+        "or_options": 0,
+        "short_notes": 5
+      }
+    },
+    "totals": {
+      "total_entries": 84,
+      "main_questions": 39,
+      "subquestions": 70,
+      "or_options": 1,
+      "short_notes": 13
+    }
+  },
+  "cloud-computing": {
+    "name": "Cloud Computing",
+    "code": "CS642",
+    "file": "Answers/CLOUD_COMPUTING_PYQ_ANSWERS.md",
+    "file_size": 111598,
+    "years": {
+      "2025": {
+        "total_entries": 14,
+        "main_questions": 7,
+        "subquestions": 14,
+        "or_options": 0,
+        "short_notes": 0
+      },
+      "2024": {
+        "total_entries": 15,
+        "main_questions": 7,
+        "subquestions": 12,
+        "or_options": 0,
+        "short_notes": 3
+      },
+      "2023": {
+        "total_entries": 14,
+        "main_questions": 7,
+        "subquestions": 14,
+        "or_options": 0,
+        "short_notes": 0
+      },
+      "2022": {
+        "total_entries": 16,
+        "main_questions": 8,
+        "subquestions": 16,
+        "or_options": 0,
+        "short_notes": 0
+      },
+      "2021": {
+        "total_entries": 16,
+        "main_questions": 8,
+        "subquestions": 16,
+        "or_options": 0,
+        "short_notes": 0
+      }
+    },
+    "totals": {
+      "total_entries": 75,
+      "main_questions": 37,
+      "subquestions": 72,
+      "or_options": 0,
+      "short_notes": 3
+    }
+  }
+}
