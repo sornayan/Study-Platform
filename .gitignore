@@ -1,6 +1,6 @@
 # ========================================================
 # SemesterOS — .gitignore
-# Production-ready configuration for GitHub & Vercel
+# Production-ready configuration for GitHub & Netlify
 # ========================================================
 
 # 1. Dependencies
@@ -8,14 +8,15 @@ node_modules/
 .pnp
 .pnp.js
 
-# 2. Production Build Output (Vercel builds this on deployment)
+# 2. Production Build Output (Netlify builds this on deployment)
 dist/
 dist-ssr/
 build/
 out/
 *.local
 
-# 3. Vercel Project Cache & Metadata
+# 3. Deployment Provider Cache & Metadata (Netlify / Vercel)
+.netlify
 .vercel
 
 # 4. Environment Variables & Credentials
