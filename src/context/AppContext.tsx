@@ -4,7 +4,6 @@ import { getAllQuestions } from '../data/pyqData';
 import { calculateCanonicalSM2 } from '../utils/sm2';
 
 const STORAGE_KEY = 'semesteros_user_progress_v1';
-const THEME_KEY = 'semesteros_theme_v1';
 
 const getInitialProgress = (): UserProgress => {
   const defaultProgress: UserProgress = {
@@ -54,7 +53,6 @@ const getInitialProgress = (): UserProgress => {
 
 interface AppContextType {
   theme: 'light' | 'dark';
-  toggleTheme: () => void;
   currentRoute: string;
   setCurrentRoute: (route: string) => void;
   activeSubjectId: string | null;
@@ -95,8 +93,10 @@ const AppContext = createContext<AppContextType | null>(null);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    const saved = localStorage.getItem(THEME_KEY);
-    return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return 'light';
   });
 
   const getInitialRoute = (): string => {
@@ -179,15 +179,37 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [pomodoroMode, setPomodoroMode] = useState<'work' | 'break'>('work');
   const [pomodoroFocusMode, setPomodoroFocusMode] = useState(false);
 
-  // Sync theme to DOM
+  // Automatically adapt theme to system mode setting in real-time
   useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+
+    // Purge any legacy manual theme overrides
+    try {
+      localStorage.removeItem('semesteros_theme_v1');
+    } catch (e) {}
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const updateTheme = (matches: boolean) => {
+      const mode = matches ? 'dark' : 'light';
+      setTheme(mode);
+      if (matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+
+    updateTheme(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => updateTheme(e.matches);
+    try {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    } catch (err) {
+      mediaQuery.addListener(handleChange);
+      return () => mediaQuery.removeListener(handleChange);
     }
-    localStorage.setItem(THEME_KEY, theme);
-  }, [theme]);
+  }, []);
 
   // Persist progress
   useEffect(() => {
@@ -221,10 +243,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
     return () => clearInterval(interval);
   }, [pomodoroActive, pomodoroTimeLeft, pomodoroMode]);
-
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
-  };
 
   const getTodayStr = () => new Date().toISOString().split('T')[0];
 
@@ -400,7 +418,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     <AppContext.Provider
       value={{
         theme,
-        toggleTheme,
         currentRoute,
         setCurrentRoute,
         activeSubjectId,

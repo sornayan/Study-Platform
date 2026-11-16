@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { 
   Menu, 
   Search, 
-  Sun, 
-  Moon, 
   Timer, 
   Calendar, 
   X,
@@ -23,8 +21,6 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onToggleMobile }) => {
   const { 
-    theme, 
-    toggleTheme, 
     pomodoroActive, 
     pomodoroTimeLeft, 
     startPomodoro, 
@@ -178,16 +174,6 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobile }) => {
           title="Print page or current question answer"
         >
           <Printer className="w-4 h-4" />
-        </button>
-
-        {/* Theme Toggle Button */}
-        <button
-          onClick={toggleTheme}
-          className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-          aria-label="Toggle theme"
-          title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-        >
-          {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4 text-amber-400" />}
         </button>
       </div>
     </header>
