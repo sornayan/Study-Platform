@@ -223,7 +223,7 @@ export const StudyRoomView: React.FC = () => {
 
         {/* MODE 1: Read & Understand Mode */}
         {studyMode === 'read' && (
-          <div className="p-6 md:p-8 space-y-6">
+          <div className="p-3 sm:p-6 md:p-8 space-y-4 md:space-y-6 overflow-x-auto">
             <div className="flex items-center justify-between text-xs text-slate-400">
               <span>Full Official 7-Mark Examination Solution</span>
               <button
@@ -240,7 +240,7 @@ export const StudyRoomView: React.FC = () => {
 
         {/* MODE 2: Active Recall Mode (Flagship Learning Feature!) */}
         {studyMode === 'recall' && (
-          <div className="p-6 md:p-8 space-y-6">
+          <div className="p-3 sm:p-6 md:p-8 space-y-4 md:space-y-6">
             <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40 space-y-2">
               <div className="flex items-center gap-2 text-xs font-bold text-amber-800 dark:text-amber-300 uppercase">
                 <BrainCircuit className="w-4 h-4" />

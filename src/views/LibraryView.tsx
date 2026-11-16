@@ -132,7 +132,7 @@ export const LibraryView: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto pb-16">
+    <div className="space-y-4 md:space-y-6 max-w-7xl mx-auto pb-16 w-full">
       {/* Subject Tabs */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
         {subjects.map(sub => {
@@ -158,7 +158,7 @@ export const LibraryView: React.FC = () => {
       </div>
 
       {/* Control Bar: Years, Modules & Search */}
-      <div className="p-4 md:p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+      <div className="p-3 sm:p-4 md:p-5 rounded-2xl md:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
         {/* Top Row: Year Pills & Action buttons */}
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2 flex-wrap">
@@ -301,10 +301,10 @@ export const LibraryView: React.FC = () => {
             return (
               <div
                 key={q.id}
-                className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-700"
+                className="rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-700 w-full"
               >
                 {/* Question Header Card */}
-                <div className="p-5 md:p-6 space-y-3">
+                <div className="p-3.5 sm:p-5 md:p-6 space-y-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <span className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/40">
@@ -461,9 +461,9 @@ export const LibraryView: React.FC = () => {
 
                 {/* Expandable Official Answer */}
                 {isExpanded && (
-                  <div className="p-6 md:p-8 bg-slate-50/80 dark:bg-slate-950/40 border-t border-slate-200 dark:border-slate-800 space-y-6">
+                  <div className="p-1 sm:p-3 md:p-6 bg-slate-50/80 dark:bg-slate-950/40 border-t border-slate-200 dark:border-slate-800 space-y-4">
                     {/* Complete Rendered Markdown Answer */}
-                    <div className="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                    <div className="bg-white dark:bg-slate-900 p-2.5 sm:p-5 md:p-8 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-x-auto">
                       <MarkdownRenderer
                         content={q.answerMarkdown}
                         highlights={progress.highlights[q.id] || []}

@@ -92,7 +92,7 @@ export const App: React.FC = () => {
         )}
 
         {/* View Container */}
-        <main className="flex-1 p-4 md:p-8 overflow-y-auto">
+        <main className="flex-1 px-2.5 py-4 sm:px-4 md:p-8 overflow-y-auto overflow-x-hidden">
           {renderCurrentView()}
         </main>
       </div>

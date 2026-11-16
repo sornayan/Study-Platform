@@ -28,12 +28,42 @@ export const getSubjectById = (id: string): Subject | undefined => {
   return DATABASE.subjects[id];
 };
 
+export function parseQRank(qNum: string) {
+  const clean = qNum.replace(/^(Question|Q)\s*/i, '').trim();
+  const mainMatch = clean.match(/^(\d+)/);
+  const main = mainMatch ? parseInt(mainMatch[1], 10) : 999;
+  
+  const subMatch = clean.match(/\(([a-z])\)/i) || clean.match(/^\d+([a-z])\b/i);
+  const sub = subMatch ? subMatch[1].toLowerCase() : '';
+  
+  const romanMatch = clean.match(/\((i|ii|iii|iv|v|vi)\)/i);
+  const romanMap: Record<string, number> = { i: 1, ii: 2, iii: 3, iv: 4, v: 5, vi: 6 };
+  const roman = romanMatch ? (romanMap[romanMatch[1].toLowerCase()] || 0) : 0;
+  
+  const isOr = /\bOR\b/i.test(clean) ? 1 : 0;
+  
+  return { main, sub, roman, isOr };
+}
+
+export function compareQuestions(a: Question, b: Question): number {
+  if (a.year !== b.year) {
+    return b.year.localeCompare(a.year);
+  }
+  const rA = parseQRank(a.questionNumber);
+  const rB = parseQRank(b.questionNumber);
+  if (rA.main !== rB.main) return rA.main - rB.main;
+  if (rA.sub !== rB.sub) return rA.sub.localeCompare(rB.sub);
+  if (rA.roman !== rB.roman) return rA.roman - rB.roman;
+  if (rA.isOr !== rB.isOr) return rA.isOr - rB.isOr;
+  return a.id.localeCompare(b.id);
+}
+
 export const getAllQuestions = (): Question[] => {
   const all: Question[] = [];
   Object.values(DATABASE.subjects).forEach(sub => {
     all.push(...sub.questions);
   });
-  return all;
+  return all.sort(compareQuestions);
 };
 
 export const getQuestionById = (id: string): Question | undefined => {
@@ -47,10 +77,10 @@ export const getQuestionById = (id: string): Question | undefined => {
 export const getQuestionsBySubject = (subjectId: string, year?: string): Question[] => {
   const sub = DATABASE.subjects[subjectId];
   if (!sub) return [];
-  if (year && year !== 'all') {
-    return sub.questions.filter(q => q.year === year);
-  }
-  return sub.questions;
+  const list = year && year !== 'all'
+    ? sub.questions.filter(q => q.year === year)
+    : [...sub.questions];
+  return list.sort(compareQuestions);
 };
 
 export const searchQuestions = (query: string, subjectId?: string): Question[] => {

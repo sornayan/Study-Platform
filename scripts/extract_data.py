@@ -532,7 +532,19 @@ def parse_subject(subject_key):
                     'practiceQuestions': practice_questions
                 })
 
-    all_questions.sort(key=lambda q: (q['year'], q['questionNumber']), reverse=True)
+    def q_sort_key(q):
+        clean = re.sub(r'^(Question|Q)\s*', '', q['questionNumber'], flags=re.IGNORECASE).strip()
+        m_main = re.search(r'^(\d+)', clean)
+        main_num = int(m_main.group(1)) if m_main else 999
+        m_sub = re.search(r'\(([a-z])\)', clean, flags=re.IGNORECASE)
+        sub_str = m_sub.group(1).lower() if m_sub else ''
+        m_rom = re.search(r'\((i|ii|iii|iv|v|vi)\)', clean, flags=re.IGNORECASE)
+        rom_map = {'i': 1, 'ii': 2, 'iii': 3, 'iv': 4, 'v': 5, 'vi': 6}
+        rom_num = rom_map.get(m_rom.group(1).lower(), 0) if m_rom else 0
+        is_or = 1 if re.search(r'\bOR\b', clean, flags=re.IGNORECASE) else 0
+        return (-int(q['year']), main_num, sub_str, rom_num, is_or)
+
+    all_questions.sort(key=q_sort_key)
     
     return {
         'id': config['id'],
